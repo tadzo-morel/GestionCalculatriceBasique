@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CALCULATRICE BASIQUE</h1>
+    <form method="post">
+        <input type="number" id="nbr1" placeholder="nombre 1">
+        <select name="" id="signe">
+            <option value="-">-</option>
+            <option value="+">+</option>
+            <option value="/">/</option>
+            <option value="*">*</option>
+        </select>
+        <input type="number" name="" id="nbr2" placeholder="nombre 2">
+        <button type="submit" id="resultat">resultat</button>
+    </form>
+    <div id="result"></div>
+    <script src="script.js">
+        var resultat=document.getElementById("resultat").value;
+        resultat.addEventListener("submit",function(e){
+            e.preventDefault;
+            alert("desole");
+        });
+    </script>
+</body>
+</html>
