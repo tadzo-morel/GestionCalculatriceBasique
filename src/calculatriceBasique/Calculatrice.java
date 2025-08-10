@@ -16,7 +16,7 @@ public class Calculatrice extends JFrame {
     JButton[] tabButton = new JButton[tabString.length];
     private JLabel ecran = new JLabel();
     private Dimension dim = new Dimension(50, 40);
-    private Dimension dim2 = new Dimension(50, 30);
+    private Dimension dim2 = new Dimension(50,  31);
     private double chiffre1;
     private boolean clicOperateur = false, update = false;
     private String operateur="" ;
@@ -27,6 +27,8 @@ public class Calculatrice extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setUndecorated(false);
+        this.setLayout(new BorderLayout());
         //on initialise le conteneur avec tout les composants
         initComposant();
         //on ajoute le conteneur
@@ -39,12 +41,13 @@ public class Calculatrice extends JFrame {
         Font police = new Font("Arial", Font.BOLD, 20);
         ecran = new JLabel("0");
         ecran.setFont(police);
+
         //on aligne les informations a droite dans le jlabel
         ecran.setHorizontalAlignment(JLabel.RIGHT);
         ecran.setPreferredSize(new Dimension(220, 20));
         JPanel chiffre = new JPanel();
         JPanel operateur=new JPanel();
-        operateur.setPreferredSize(new Dimension(55,200));
+        operateur.setPreferredSize(new Dimension(55,225));
         chiffre.setPreferredSize(new Dimension(165, 225));
         JPanel paneEcran = new JPanel();
         paneEcran.setPreferredSize(new Dimension(220, 30));
@@ -64,6 +67,7 @@ public class Calculatrice extends JFrame {
                 case 12:
                     tabButton[i].setForeground(Color.red);
                     tabButton[i].addActionListener(new ResetListener());
+                    tabButton[i].setPreferredSize(dim2);
                     operateur.add(tabButton[i]);
                     break;
                 case 13:
@@ -114,7 +118,7 @@ public class Calculatrice extends JFrame {
         }
         if (operateur.equals("*")) {
             chiffre1 = chiffre1 * Double.valueOf(ecran.getText()).doubleValue();
-            ecran.setText(String.valueOf(chiffre1));
+            ecran.setText( String.valueOf(chiffre1));
         }
         if (operateur.equals("/")) {
             try {
@@ -128,7 +132,7 @@ public class Calculatrice extends JFrame {
 
     //listener utiliser our les chiffres
     //permet de stocker les chiffres et les afficher
-    class ChiffreListener implements ActionListener {
+     public class ChiffreListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             //on affiche le chiffre additionnel dans le label
             String str = ((JButton) e.getSource()).getText();
@@ -214,7 +218,7 @@ public class Calculatrice extends JFrame {
             update=true;
             chiffre1=0;
             operateur="";
-            ecran.setText("");
+            ecran.setText("0");
         }
     }
 }
